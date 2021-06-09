@@ -6,65 +6,63 @@ public class ControleRemoto {
     private int volumeAtual;
     private boolean estaMudo;
 
-    public ControleRemoto(){
+    public ControleRemoto() {
         this.estaLigado = false;
         this.volumeAtual = 0;
         this.estaMudo = false;
     }
 
-    public void ligar() throws Exception{
-        if(estaLigado){
-            TvLigadaException excecao =  new TvLigadaException();
+    public void ligar() throws Exception {
+        if (this.estaLigado) {
+            TvLigadaException excecao = new TvLigadaException();
             //Exception excecao = new Exception("A TV já está ligada!");
             throw excecao;
-            //System.out.println("A TV já está ligada!");
-        }else{
-            System.out.println("A TV ligou");
+        } else {
             this.estaLigado = true;
+            System.out.println("A TV ligou");
         }
-        
 
     }
 
-    public void desligar() throws Exception{
-        //!estaligado
-        if(estaLigado == false){
-            //Exception excecao = new Exception("A TV já está desligada");
-            //throw excecao;
-            throw new TvDesligadaException();
+    public void desligar() throws Exception {
+        //!estaLigada
+        if(this.estaLigado == false){
+            //Exception excecao =  new Exception("A TV já está desligada!");
+            throw  new  TvDesligadaException();
         }
-        System.out.println("A TV desligou");
         this.estaLigado = false;
-        
-        
+        System.out.println("A TV desligou");
+
     }
 
     public void aumentarVolume() throws ControleRemotoException{
-        if(volumeAtual > 60){
-            throw new ControleRemotoException("O volume está no máximo");
+        if(this.volumeAtual > 60){
+            throw new ControleRemotoException("O volume está no maximo");
         }
         //this.volumeAtual += 10;
         this.volumeAtual += 40;
-        System.out.println("O volume é: " + this.volumeAtual);
+        System.out.println("O Volume é: " + this.volumeAtual);
+
     }
 
-    public void diminuirVolume(){
+    public void diminuirVolume() {
         //this.volumeAtual -= 10;
         this.volumeAtual -= 40;
-        System.out.println("O volume é: " + this.volumeAtual);
+        System.out.println("O Volume é: " + this.volumeAtual);
     }
 
-    public void ativarMudo(){
+    public void ativarMudo() {
+        
         this.estaMudo = true;
         System.out.println("A TV está muda");
     }
 
-    public void desligarMudo(){
+    public void desligarMudo() {
         this.estaMudo = false;
         System.out.println("A TV não está muda");
     }
 
-    //Método getter e setter
+    // Métodos getter e setter
     public boolean isEstaLigado() {
         return estaLigado;
     }
@@ -89,6 +87,4 @@ public class ControleRemoto {
         this.estaMudo = estaMudo;
     }
 
-    
-    
 }
